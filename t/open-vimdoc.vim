@@ -42,4 +42,11 @@ describe 'help#GenarateUrl'
     Expect GenerateUrl('foo') == 'http://vimdoc.sourceforge.net/htmldoc/foo.html'
   end
 
+  it 'generates an URL from contextual filename'
+    help
+    " Jump to the first blank line (so there's no helptag beneath cursor)
+    normal! }
+    Expect GenerateUrl(GetFilename(), GetHelptag()) == 'http://vimdoc.sourceforge.net/htmldoc/help.html'
+  end
+
 end
