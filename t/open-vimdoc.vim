@@ -25,6 +25,11 @@ describe 'help#GetHelptag'
     help /\&
     Expect GetHelptag() ==# '/\&'
   end
+
+  it 'returns a blank string when cursor is not on a helptag'
+    help
+    normal W
+    Expect GetHelptag() ==# ''
   end
 
 end

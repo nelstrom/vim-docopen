@@ -3,7 +3,13 @@ function! GetFilename()
 endfunction
 
 function! GetHelptag()
-  return expand('<cword>')
+  let word = expand('<cWORD>')
+  let stripped = substitute(word, '\v*([^*]*)*', '\1', 'g')
+  if word !=# stripped
+    return stripped
+  else
+    return ''
+  endif
 endfunction
 
 function! GenerateUrl(filename, ...)
