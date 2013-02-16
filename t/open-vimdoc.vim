@@ -34,4 +34,8 @@ describe 'help#GenarateUrl'
     Expect GenerateUrl('foo', 'bar') == 'http://vimdoc.sourceforge.net/htmldoc/foo.html#bar'
   end
 
+  it 'generates an URL from specified filename'
+    Expect GenerateUrl('foo') == 'http://vimdoc.sourceforge.net/htmldoc/foo.html'
+  end
+
 end
