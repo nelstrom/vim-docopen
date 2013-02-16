@@ -13,3 +13,11 @@ function! GenerateUrl(filename, ...)
     return 'http://vimdoc.sourceforge.net/htmldoc/' . a:filename . '.html'
   endif
 endfunction
+
+function! OpenDocumentation()
+  execute '!open ' . GenerateUrl(GetFilename(), GetHelptag())
+endfunction
+command! -buffer Vimdoc call OpenDocumentation()
+
+" Teardown
+let b:undo_ftplugin .= '| delcommand Vimdoc'
