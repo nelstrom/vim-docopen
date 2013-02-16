@@ -1,8 +1,10 @@
+silent filetype plugin on
+
 describe 'help#filename'
 
   it 'gets name of current helpfile'
     help
-    Expect expand('<cfile>') == 'help.txt'
+    Expect Filename() == 'help.txt'
   end
 
 end
