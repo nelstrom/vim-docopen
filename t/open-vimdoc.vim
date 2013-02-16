@@ -34,6 +34,10 @@ describe 'help#GetHelptag'
     help
     normal W
     Expect GetHelptag() ==# ''
+    normal }
+    Expect GetHelptag() ==# ''
+    normal G
+    Expect GetHelptag() ==# ''
   end
 
 end

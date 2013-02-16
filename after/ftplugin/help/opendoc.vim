@@ -4,7 +4,7 @@ endfunction
 
 function! GetHelptag()
   let word = expand('<cWORD>')
-  let stripped = substitute(word, '\v*([^*]*)*', '\1', 'g')
+  let stripped = substitute(word, '\v^\*([^*]*)\*$', '\1', 'g')
   if word !=# stripped
     return stripped
   else
