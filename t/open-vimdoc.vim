@@ -27,3 +27,11 @@ describe 'help#Helptag'
   end
 
 end
+
+describe 'help#GenarateUrl'
+
+  it 'generates an URL from specified filename and helptag'
+    Expect GenerateUrl('foo', 'bar') == 'http://vimdoc.sourceforge.net/htmldoc/foo.html#bar'
+  end
+
+end
