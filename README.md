@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/nelstrom/vim-docopen.png)](https://travis-ci.org/nelstrom/vim-docopen)
+
 Specification:
 
 * create a :Vimdoc command that opens online documentation for current helptag
