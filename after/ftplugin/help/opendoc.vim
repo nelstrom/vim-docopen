@@ -21,7 +21,7 @@ function! GenerateUrl(filename, ...)
 endfunction
 
 function! OpenDocumentation()
-  execute '!open ' . escape(GenerateUrl(GetFilename(), GetHelptag()), '#')
+  execute '!open "' . escape(GenerateUrl(GetFilename(), GetHelptag()), '#') . '"'
 endfunction
 command! -buffer Vimdoc call OpenDocumentation()
 

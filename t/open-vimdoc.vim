@@ -24,6 +24,10 @@ describe 'help#GetHelptag'
     Expect GetHelptag() ==# '{offset}'
     help /\&
     Expect GetHelptag() ==# '/\&'
+    help '
+    Expect GetHelptag() ==# "'"
+    help "
+    Expect GetHelptag() ==# "quote"
   end
 
   it 'returns a blank string when cursor is not on a helptag'
