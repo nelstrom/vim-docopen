@@ -12,3 +12,18 @@ describe 'help#Filename'
   end
 
 end
+
+describe 'help#Helptag'
+
+  it 'gets the helptag under the cursor'
+    help j
+    Expect Helptag() == 'j'
+    help search-offset
+    Expect Helptag() == 'search-offset'
+    help {offset}
+    Expect Helptag() == '{offset}'
+    help /\&
+    Expect Helptag() == '/\&'
+  end
+
+end
