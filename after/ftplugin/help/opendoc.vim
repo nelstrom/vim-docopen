@@ -1,3 +1,3 @@
 function! Filename()
-  return expand('%:t')
+  return expand('%:t:r')
 endfunction

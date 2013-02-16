@@ -1,10 +1,10 @@
 silent filetype plugin on
 
-describe 'help#filename'
+describe 'help#Filename'
 
   it 'gets name of current helpfile'
     help
-    Expect Filename() == 'help.txt'
+    Expect Filename() == 'help'
   end
 
 end
