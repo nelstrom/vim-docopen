@@ -10,3 +10,4 @@ Specification:
 * format: http://vimdoc.sourceforge.net/htmldoc/{FILENAME}.html#{HELPTAG}
 * if there's no helptag under the cusor, open http://vimdoc.sourceforge.net/htmldoc/{FILENAME}.html
 * specifically: only treat word below cursor as a helptag if it's surrounded in *stars*
+* make the :Vimdoc command the only public interface (i.e. make all functions use scope s: )
