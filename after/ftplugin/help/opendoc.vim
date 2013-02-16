@@ -7,7 +7,7 @@ function! GetHelptag()
 endfunction
 
 function! GenerateUrl(filename, ...)
-  if a:0 == 1
+  if a:0 == 1 && a:1 != ''
     return 'http://vimdoc.sourceforge.net/htmldoc/' . a:filename . '.html#' . a:1
   else
     return 'http://vimdoc.sourceforge.net/htmldoc/' . a:filename . '.html'
