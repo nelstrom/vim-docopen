@@ -1,29 +1,29 @@
 silent filetype plugin on
 
-describe 'help#Filename'
+describe 'help#GetFilename'
 
   it 'gets name of current helpfile'
     help
-    Expect Filename() == 'help'
+    Expect GetFilename() == 'help'
     help j
-    Expect Filename() == 'motion'
+    Expect GetFilename() == 'motion'
     help usr_01
-    Expect Filename() == 'usr_01'
+    Expect GetFilename() == 'usr_01'
   end
 
 end
 
-describe 'help#Helptag'
+describe 'help#GetHelptag'
 
   it 'gets the helptag under the cursor'
     help j
-    Expect Helptag() == 'j'
+    Expect GetHelptag() == 'j'
     help search-offset
-    Expect Helptag() == 'search-offset'
+    Expect GetHelptag() == 'search-offset'
     help {offset}
-    Expect Helptag() == '{offset}'
+    Expect GetHelptag() == '{offset}'
     help /\&
-    Expect Helptag() == '/\&'
+    Expect GetHelptag() == '/\&'
   end
 
 end

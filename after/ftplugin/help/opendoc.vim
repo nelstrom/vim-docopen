@@ -1,8 +1,8 @@
-function! Filename()
+function! GetFilename()
   return expand('%:t:r')
 endfunction
 
-function! Helptag()
+function! GetHelptag()
   return expand('<cword>')
 endfunction
 
