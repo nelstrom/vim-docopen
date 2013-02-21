@@ -45,27 +45,27 @@ end
 describe 'help#GenarateUrl'
 
   it 'generates an URL from specified filename and helptag'
-    Expect GenerateUrl('foo', 'bar') ==# 'http://vimdoc.sourceforge.net/htmldoc/foo.html#bar'
+    Expect RawUrl('foo', 'bar') ==# 'http://vimdoc.sourceforge.net/htmldoc/foo.html#bar'
   end
 
   it 'generates an URL from specified filename given a blank helptag'
-    Expect GenerateUrl('foo', '') ==# 'http://vimdoc.sourceforge.net/htmldoc/foo.html'
+    Expect RawUrl('foo', '') ==# 'http://vimdoc.sourceforge.net/htmldoc/foo.html'
   end
 
   it 'generates an URL from specified filename'
-    Expect GenerateUrl('foo') ==# 'http://vimdoc.sourceforge.net/htmldoc/foo.html'
+    Expect RawUrl('foo') ==# 'http://vimdoc.sourceforge.net/htmldoc/foo.html'
   end
 
   it 'generates an URL from contextual filename'
     help
     " Jump to the first blank line (so there's no helptag beneath cursor)
     normal! }
-    Expect GenerateUrl(GetFilename(), GetHelptag()) ==# 'http://vimdoc.sourceforge.net/htmldoc/help.html'
+    Expect RawUrl(GetFilename(), GetHelptag()) ==# 'http://vimdoc.sourceforge.net/htmldoc/help.html'
   end
 
   it 'generates an URL from contextual filename and helptag'
     help j
-    Expect GenerateUrl(GetFilename(), GetHelptag()) ==# 'http://vimdoc.sourceforge.net/htmldoc/motion.html#j'
+    Expect RawUrl(GetFilename(), GetHelptag()) ==# 'http://vimdoc.sourceforge.net/htmldoc/motion.html#j'
   end
 
 end

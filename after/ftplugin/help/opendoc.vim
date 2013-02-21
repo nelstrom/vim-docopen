@@ -12,7 +12,7 @@ function! GetHelptag()
   endif
 endfunction
 
-function! GenerateUrl(filename, ...)
+function! RawUrl(filename, ...)
   if a:0 ==# 1 && a:1 !=# ''
     return 'http://vimdoc.sourceforge.net/htmldoc/' . a:filename . '.html#' . a:1
   else
@@ -21,7 +21,7 @@ function! GenerateUrl(filename, ...)
 endfunction
 
 function! OpenDocumentation()
-  execute '!open "' . escape(GenerateUrl(GetFilename(), GetHelptag()), '#') . '"'
+  execute '!open "' . escape(RawUrl(GetFilename(), GetHelptag()), '#') . '"'
 endfunction
 command! -buffer Vimdoc call OpenDocumentation()
 
