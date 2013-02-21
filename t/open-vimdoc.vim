@@ -6,11 +6,11 @@ describe 'help#GetFilename'
 
   it 'gets name of current helpfile'
     help
-    Expect GetFilename() ==# 'help'
+    Expect Call('opendoc#GetFilename') ==# 'help'
     help j
-    Expect GetFilename() ==# 'motion'
+    Expect Call('opendoc#GetFilename') ==# 'motion'
     help usr_01
-    Expect GetFilename() ==# 'usr_01'
+    Expect Call('opendoc#GetFilename') ==# 'usr_01'
   end
 
 end
@@ -62,12 +62,12 @@ describe 'help#GenarateUrl'
     help
     " Jump to the first blank line (so there's no helptag beneath cursor)
     normal! }
-    Expect Call('opendoc#RawUrl', GetFilename(), GetHelptag()) ==# 'http://vimdoc.sourceforge.net/htmldoc/help.html'
+    Expect Call('opendoc#RawUrl', opendoc#GetFilename(), GetHelptag()) ==# 'http://vimdoc.sourceforge.net/htmldoc/help.html'
   end
 
   it 'generates an URL from contextual filename and helptag'
     help j
-    Expect Call('opendoc#RawUrl', GetFilename(), GetHelptag()) ==# 'http://vimdoc.sourceforge.net/htmldoc/motion.html#j'
+    Expect Call('opendoc#RawUrl', opendoc#GetFilename(), GetHelptag()) ==# 'http://vimdoc.sourceforge.net/htmldoc/motion.html#j'
   end
 
 end

@@ -6,7 +6,7 @@ function! opendoc#sid()
   return maparg('<SID>', 'n')
 endfunction
 
-function! GetFilename()
+function! opendoc#GetFilename()
   return expand('%:t:r')
 endfunction
 
@@ -29,7 +29,7 @@ function! opendoc#RawUrl(filename, ...)
 endfunction
 
 function! OpenDocumentation()
-  execute '!open "' . escape(opendoc#RawUrl(GetFilename(), GetHelptag()), '#') . '"'
+  execute '!open "' . escape(opendoc#RawUrl(opendoc#GetFilename(), GetHelptag()), '#') . '"'
 endfunction
 command! -buffer Vimdoc call OpenDocumentation()
 
