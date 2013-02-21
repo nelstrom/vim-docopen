@@ -1,3 +1,11 @@
+function! opendoc#scope()
+  return s:
+endfunction
+
+function! opendoc#sid()
+  return maparg('<SID>', 'n')
+endfunction
+
 function! GetFilename()
   return expand('%:t:r')
 endfunction
@@ -12,7 +20,7 @@ function! GetHelptag()
   endif
 endfunction
 
-function! RawUrl(filename, ...)
+function! opendoc#RawUrl(filename, ...)
   if a:0 ==# 1 && a:1 !=# ''
     return 'http://vimdoc.sourceforge.net/htmldoc/' . a:filename . '.html#' . a:1
   else
@@ -21,7 +29,7 @@ function! RawUrl(filename, ...)
 endfunction
 
 function! OpenDocumentation()
-  execute '!open "' . escape(RawUrl(GetFilename(), GetHelptag()), '#') . '"'
+  execute '!open "' . escape(opendoc#RawUrl(GetFilename(), GetHelptag()), '#') . '"'
 endfunction
 command! -buffer Vimdoc call OpenDocumentation()
 

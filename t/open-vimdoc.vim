@@ -1,4 +1,6 @@
 silent filetype plugin on
+help
+call vspec#hint({'scope': 'opendoc#scope()', 'sid': 'opendoc#sid()'})
 
 describe 'help#GetFilename'
 
@@ -45,27 +47,27 @@ end
 describe 'help#GenarateUrl'
 
   it 'generates an URL from specified filename and helptag'
-    Expect RawUrl('foo', 'bar') ==# 'http://vimdoc.sourceforge.net/htmldoc/foo.html#bar'
+    Expect Call('opendoc#RawUrl', 'foo', 'bar') ==# 'http://vimdoc.sourceforge.net/htmldoc/foo.html#bar'
   end
 
   it 'generates an URL from specified filename given a blank helptag'
-    Expect RawUrl('foo', '') ==# 'http://vimdoc.sourceforge.net/htmldoc/foo.html'
+    Expect Call('opendoc#RawUrl', 'foo', '') ==# 'http://vimdoc.sourceforge.net/htmldoc/foo.html'
   end
 
   it 'generates an URL from specified filename'
-    Expect RawUrl('foo') ==# 'http://vimdoc.sourceforge.net/htmldoc/foo.html'
+    Expect Call('opendoc#RawUrl', 'foo') ==# 'http://vimdoc.sourceforge.net/htmldoc/foo.html'
   end
 
   it 'generates an URL from contextual filename'
     help
     " Jump to the first blank line (so there's no helptag beneath cursor)
     normal! }
-    Expect RawUrl(GetFilename(), GetHelptag()) ==# 'http://vimdoc.sourceforge.net/htmldoc/help.html'
+    Expect Call('opendoc#RawUrl', GetFilename(), GetHelptag()) ==# 'http://vimdoc.sourceforge.net/htmldoc/help.html'
   end
 
   it 'generates an URL from contextual filename and helptag'
     help j
-    Expect RawUrl(GetFilename(), GetHelptag()) ==# 'http://vimdoc.sourceforge.net/htmldoc/motion.html#j'
+    Expect Call('opendoc#RawUrl', GetFilename(), GetHelptag()) ==# 'http://vimdoc.sourceforge.net/htmldoc/motion.html#j'
   end
 
 end
