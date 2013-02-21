@@ -10,7 +10,7 @@ function! opendoc#GetFilename()
   return expand('%:t:r')
 endfunction
 
-function! GetHelptag()
+function! opendoc#GetHelptag()
   let word = expand('<cWORD>')
   let stripped = substitute(word, '\v^\*([^*]*)\*$', '\1', 'g')
   if word !=# stripped
@@ -29,7 +29,7 @@ function! opendoc#RawUrl(filename, ...)
 endfunction
 
 function! OpenDocumentation()
-  execute '!open "' . escape(opendoc#RawUrl(opendoc#GetFilename(), GetHelptag()), '#') . '"'
+  execute '!open "' . escape(opendoc#RawUrl(opendoc#GetFilename(), opendoc#GetHelptag()), '#') . '"'
 endfunction
 command! -buffer Vimdoc call OpenDocumentation()
 

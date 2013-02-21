@@ -19,27 +19,27 @@ describe 'help#GetHelptag'
 
   it 'gets the helptag under the cursor'
     help j
-    Expect GetHelptag() ==# 'j'
+    Expect opendoc#GetHelptag() ==# 'j'
     help search-offset
-    Expect GetHelptag() ==# 'search-offset'
+    Expect opendoc#GetHelptag() ==# 'search-offset'
     help {offset}
-    Expect GetHelptag() ==# '{offset}'
+    Expect opendoc#GetHelptag() ==# '{offset}'
     help /\&
-    Expect GetHelptag() ==# '/\&'
+    Expect opendoc#GetHelptag() ==# '/\&'
     help '
-    Expect GetHelptag() ==# "'"
+    Expect opendoc#GetHelptag() ==# "'"
     help "
-    Expect GetHelptag() ==# "quote"
+    Expect opendoc#GetHelptag() ==# "quote"
   end
 
   it 'returns a blank string when cursor is not on a helptag'
     help
     normal W
-    Expect GetHelptag() ==# ''
+    Expect opendoc#GetHelptag() ==# ''
     normal }
-    Expect GetHelptag() ==# ''
+    Expect opendoc#GetHelptag() ==# ''
     normal G
-    Expect GetHelptag() ==# ''
+    Expect opendoc#GetHelptag() ==# ''
   end
 
 end
@@ -62,12 +62,12 @@ describe 'help#GenarateUrl'
     help
     " Jump to the first blank line (so there's no helptag beneath cursor)
     normal! }
-    Expect Call('opendoc#RawUrl', opendoc#GetFilename(), GetHelptag()) ==# 'http://vimdoc.sourceforge.net/htmldoc/help.html'
+    Expect Call('opendoc#RawUrl', opendoc#GetFilename(), opendoc#GetHelptag()) ==# 'http://vimdoc.sourceforge.net/htmldoc/help.html'
   end
 
   it 'generates an URL from contextual filename and helptag'
     help j
-    Expect Call('opendoc#RawUrl', opendoc#GetFilename(), GetHelptag()) ==# 'http://vimdoc.sourceforge.net/htmldoc/motion.html#j'
+    Expect Call('opendoc#RawUrl', opendoc#GetFilename(), opendoc#GetHelptag()) ==# 'http://vimdoc.sourceforge.net/htmldoc/motion.html#j'
   end
 
 end
