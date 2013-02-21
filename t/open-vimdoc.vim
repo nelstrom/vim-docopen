@@ -1,16 +1,16 @@
 silent filetype plugin on
 help
-call vspec#hint({'scope': 'opendoc#scope()', 'sid': 'opendoc#sid()'})
+" call vspec#hint({'scope': 'opendoc#scope()', 'sid': 'opendoc#sid()'})
 
 describe 'help#GetFilename'
 
   it 'gets name of current helpfile'
     help
-    Expect Call('opendoc#GetFilename') ==# 'help'
+    Expect opendoc#GetFilename() ==# 'help'
     help j
-    Expect Call('opendoc#GetFilename') ==# 'motion'
+    Expect opendoc#GetFilename() ==# 'motion'
     help usr_01
-    Expect Call('opendoc#GetFilename') ==# 'usr_01'
+    Expect opendoc#GetFilename() ==# 'usr_01'
   end
 
 end
@@ -47,27 +47,27 @@ end
 describe 'help#GenarateUrl'
 
   it 'generates an URL from specified filename and helptag'
-    Expect Call('opendoc#RawUrl', 'foo', 'bar') ==# 'http://vimdoc.sourceforge.net/htmldoc/foo.html#bar'
+    Expect opendoc#RawUrl('foo', 'bar') ==# 'http://vimdoc.sourceforge.net/htmldoc/foo.html#bar'
   end
 
   it 'generates an URL from specified filename given a blank helptag'
-    Expect Call('opendoc#RawUrl', 'foo', '') ==# 'http://vimdoc.sourceforge.net/htmldoc/foo.html'
+    Expect opendoc#RawUrl('foo', '') ==# 'http://vimdoc.sourceforge.net/htmldoc/foo.html'
   end
 
   it 'generates an URL from specified filename'
-    Expect Call('opendoc#RawUrl', 'foo') ==# 'http://vimdoc.sourceforge.net/htmldoc/foo.html'
+    Expect opendoc#RawUrl('foo') ==# 'http://vimdoc.sourceforge.net/htmldoc/foo.html'
   end
 
   it 'generates an URL from contextual filename'
     help
     " Jump to the first blank line (so there's no helptag beneath cursor)
     normal! }
-    Expect Call('opendoc#RawUrl', opendoc#GetFilename(), opendoc#GetHelptag()) ==# 'http://vimdoc.sourceforge.net/htmldoc/help.html'
+    Expect opendoc#RawUrl(opendoc#GetFilename(), opendoc#GetHelptag()) ==# 'http://vimdoc.sourceforge.net/htmldoc/help.html'
   end
 
   it 'generates an URL from contextual filename and helptag'
     help j
-    Expect Call('opendoc#RawUrl', opendoc#GetFilename(), opendoc#GetHelptag()) ==# 'http://vimdoc.sourceforge.net/htmldoc/motion.html#j'
+    Expect opendoc#RawUrl(opendoc#GetFilename(), opendoc#GetHelptag()) ==# 'http://vimdoc.sourceforge.net/htmldoc/motion.html#j'
   end
 
 end
