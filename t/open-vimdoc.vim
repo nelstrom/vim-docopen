@@ -1,16 +1,16 @@
 silent filetype plugin on
 help
-" call vspec#hint({'scope': 'opendoc#scope()', 'sid': 'opendoc#sid()'})
+" call vspec#hint({'scope': 'docopen#scope()', 'sid': 'docopen#sid()'})
 
 describe 'help#GetFilename'
 
   it 'gets name of current helpfile'
     help
-    Expect opendoc#GetFilename() ==# 'help'
+    Expect docopen#GetFilename() ==# 'help'
     help j
-    Expect opendoc#GetFilename() ==# 'motion'
+    Expect docopen#GetFilename() ==# 'motion'
     help usr_01
-    Expect opendoc#GetFilename() ==# 'usr_01'
+    Expect docopen#GetFilename() ==# 'usr_01'
   end
 
 end
@@ -19,27 +19,27 @@ describe 'help#GetHelptag'
 
   it 'gets the helptag under the cursor'
     help j
-    Expect opendoc#GetHelptag() ==# 'j'
+    Expect docopen#GetHelptag() ==# 'j'
     help search-offset
-    Expect opendoc#GetHelptag() ==# 'search-offset'
+    Expect docopen#GetHelptag() ==# 'search-offset'
     help {offset}
-    Expect opendoc#GetHelptag() ==# '{offset}'
+    Expect docopen#GetHelptag() ==# '{offset}'
     help /\&
-    Expect opendoc#GetHelptag() ==# '/\&'
+    Expect docopen#GetHelptag() ==# '/\&'
     help '
-    Expect opendoc#GetHelptag() ==# "'"
+    Expect docopen#GetHelptag() ==# "'"
     help "
-    Expect opendoc#GetHelptag() ==# "quote"
+    Expect docopen#GetHelptag() ==# "quote"
   end
 
   it 'returns a blank string when cursor is not on a helptag'
     help
     normal W
-    Expect opendoc#GetHelptag() ==# ''
+    Expect docopen#GetHelptag() ==# ''
     normal }
-    Expect opendoc#GetHelptag() ==# ''
+    Expect docopen#GetHelptag() ==# ''
     normal G
-    Expect opendoc#GetHelptag() ==# ''
+    Expect docopen#GetHelptag() ==# ''
   end
 
 end
@@ -47,27 +47,27 @@ end
 describe 'help#GenarateUrl'
 
   it 'generates an URL from specified filename and helptag'
-    Expect opendoc#RawUrl('foo', 'bar') ==# 'http://vimdoc.sourceforge.net/htmldoc/foo.html#bar'
+    Expect docopen#RawUrl('foo', 'bar') ==# 'http://vimdoc.sourceforge.net/htmldoc/foo.html#bar'
   end
 
   it 'generates an URL from specified filename given a blank helptag'
-    Expect opendoc#RawUrl('foo', '') ==# 'http://vimdoc.sourceforge.net/htmldoc/foo.html'
+    Expect docopen#RawUrl('foo', '') ==# 'http://vimdoc.sourceforge.net/htmldoc/foo.html'
   end
 
   it 'generates an URL from specified filename'
-    Expect opendoc#RawUrl('foo') ==# 'http://vimdoc.sourceforge.net/htmldoc/foo.html'
+    Expect docopen#RawUrl('foo') ==# 'http://vimdoc.sourceforge.net/htmldoc/foo.html'
   end
 
   it 'generates an URL from contextual filename'
     help
     " Jump to the first blank line (so there's no helptag beneath cursor)
     normal! }
-    Expect opendoc#RawUrl(opendoc#GetFilename(), opendoc#GetHelptag()) ==# 'http://vimdoc.sourceforge.net/htmldoc/help.html'
+    Expect docopen#RawUrl(docopen#GetFilename(), docopen#GetHelptag()) ==# 'http://vimdoc.sourceforge.net/htmldoc/help.html'
   end
 
   it 'generates an URL from contextual filename and helptag'
     help j
-    Expect opendoc#RawUrl(opendoc#GetFilename(), opendoc#GetHelptag()) ==# 'http://vimdoc.sourceforge.net/htmldoc/motion.html#j'
+    Expect docopen#RawUrl(docopen#GetFilename(), docopen#GetHelptag()) ==# 'http://vimdoc.sourceforge.net/htmldoc/motion.html#j'
   end
 
 end

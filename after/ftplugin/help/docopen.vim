@@ -1,16 +1,16 @@
-function! opendoc#scope()
+function! docopen#scope()
   return s:
 endfunction
 
-function! opendoc#sid()
+function! docopen#sid()
   return maparg('<SID>', 'n')
 endfunction
 
-function! opendoc#GetFilename()
+function! docopen#GetFilename()
   return expand('%:t:r')
 endfunction
 
-function! opendoc#GetHelptag()
+function! docopen#GetHelptag()
   let word = expand('<cWORD>')
   let stripped = substitute(word, '\v^\*([^*]*)\*$', '\1', 'g')
   if word !=# stripped
@@ -20,7 +20,7 @@ function! opendoc#GetHelptag()
   endif
 endfunction
 
-function! opendoc#RawUrl(filename, ...)
+function! docopen#RawUrl(filename, ...)
   if a:0 ==# 1 && a:1 !=# ''
     return 'http://vimdoc.sourceforge.net/htmldoc/' . a:filename . '.html#' . a:1
   else
@@ -29,7 +29,7 @@ function! opendoc#RawUrl(filename, ...)
 endfunction
 
 function! OpenDocumentation()
-  execute '!open "' . escape(opendoc#RawUrl(opendoc#GetFilename(), opendoc#GetHelptag()), '#') . '"'
+  execute '!open "' . escape(docopen#RawUrl(docopen#GetFilename(), docopen#GetHelptag()), '#') . '"'
 endfunction
 command! -buffer Vimdoc call OpenDocumentation()
 
