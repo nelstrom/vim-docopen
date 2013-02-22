@@ -72,16 +72,16 @@ describe 'help#GenarateUrl'
 
 end
 
-describe ':Vimdoc'
+describe ':DocOpen'
 
   it 'command is defined for help files'
     setlocal filetype=help
-    Expect exists(':Vimdoc')  ==# 2
+    Expect exists(':DocOpen')  ==# 2
   end
 
   it 'command is not defined for non-help files'
     setlocal filetype=
-    Expect exists(':Vimdoc')  ==# 0
+    Expect exists(':DocOpen')  ==# 0
   end
 
 end

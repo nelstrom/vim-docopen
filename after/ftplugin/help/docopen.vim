@@ -31,7 +31,7 @@ endfunction
 function! OpenDocumentation()
   execute '!open "' . escape(docopen#RawUrl(docopen#GetFilename(), docopen#GetHelptag()), '#') . '"'
 endfunction
-command! -buffer Vimdoc call OpenDocumentation()
+command! -buffer DocOpen call OpenDocumentation()
 
 " Teardown
-let b:undo_ftplugin .= '| delcommand Vimdoc'
+let b:undo_ftplugin .= '| delcommand DocOpen'
