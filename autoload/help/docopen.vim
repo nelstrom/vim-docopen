@@ -27,3 +27,7 @@ function! help#docopen#RawUrl(filename, ...)
     return 'http://vimdoc.sourceforge.net/htmldoc/' . a:filename . '.html'
   endif
 endfunction
+
+function! help#docopen#OpenDocumentation()
+  execute '!open "' . escape(help#docopen#RawUrl(help#docopen#GetFilename(), help#docopen#GetHelptag()), '#') . '"'
+endfunction

@@ -1,7 +1,2 @@
-function! OpenDocumentation()
-  execute '!open "' . escape(help#docopen#RawUrl(help#docopen#GetFilename(), help#docopen#GetHelptag()), '#') . '"'
-endfunction
-command! -buffer DocOpen call OpenDocumentation()
-
-" Teardown
+command! -buffer DocOpen call help#docopen#OpenDocumentation()
 let b:undo_ftplugin .= '| delcommand DocOpen'
