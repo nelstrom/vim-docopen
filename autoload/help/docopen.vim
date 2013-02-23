@@ -29,5 +29,5 @@ function! help#docopen#RawUrl(filename, ...)
 endfunction
 
 function! help#docopen#OpenDocumentation()
-  execute '!open "' . escape(help#docopen#RawUrl(help#docopen#GetFilename(), help#docopen#GetHelptag()), '#') . '"'
+  execute '!open ' . shellescape(help#docopen#RawUrl(help#docopen#GetFilename(), help#docopen#GetHelptag()), 1)
 endfunction
