@@ -1,13 +1,8 @@
 [![Build Status](https://travis-ci.org/nelstrom/vim-docopen.png)](https://travis-ci.org/nelstrom/vim-docopen)
 
-Specification:
+This plugin lets you quickly jump from Vim's built-in documentation to the online help in the browser. For example, run:
 
-* create a :Vimdoc command that opens online documentation for current helptag
-* only define the :Vimdoc command in buffers where filetype=help
-* generate a URL from the current helptag and helpfile
-* run: :help j opens helpfile: motion.txt, at helptag: j
-* run: :help j then :Vimdoc opens url: http://vimdoc.sourceforge.net/htmldoc/motion.html#j
-* format: http://vimdoc.sourceforge.net/htmldoc/{FILENAME}.html#{HELPTAG}
-* if there's no helptag under the cusor, open http://vimdoc.sourceforge.net/htmldoc/{FILENAME}.html
-* specifically: only treat word below cursor as a helptag if it's surrounded in *stars*
-* make the :Vimdoc command the only public interface (i.e. make all functions use scope s: )
+    :help
+    :DocOpen
+
+Vim will launch the [`help.txt`](http://vimdoc.sourceforge.net/htmldoc/help.html#help.txt) resource in your browser. If your cursor is positioned on a helptag, then the `:DocOpen` command will link to the specified helptag. If the cursor is not on a helptag, then `:DocOpen` will open the current helpfile.
