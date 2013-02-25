@@ -72,6 +72,26 @@ describe 'help#GenarateUrl'
 
 end
 
+describe 'ygd'
+
+  before
+    call setreg('"', '')
+    call setreg('a', '')
+    help j
+  end
+
+  it 'sets the default register to a help URL'
+    normal ygd
+    Expect @@ ==# 'http://vimdoc.sourceforge.net/htmldoc/motion.html#j'
+  end
+
+  it 'sets the specified register to a help URL'
+    normal "aygd
+    Expect @a ==# 'http://vimdoc.sourceforge.net/htmldoc/motion.html#j'
+  end
+
+end
+
 describe ':DocOpen'
 
   it 'command is defined for help files'

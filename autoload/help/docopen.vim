@@ -28,6 +28,11 @@ function! help#docopen#RawUrl(filename, ...)
   endif
 endfunction
 
+function! help#docopen#SetRegister()
+  let url = help#docopen#RawUrl(help#docopen#GetFilename(), help#docopen#GetHelptag())
+  call setreg(v:register, url)
+endfunction
+
 function! help#docopen#OpenDocumentation()
   execute '!open ' . shellescape(help#docopen#RawUrl(help#docopen#GetFilename(), help#docopen#GetHelptag()), 1)
 endfunction
