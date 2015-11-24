@@ -23,11 +23,11 @@ describe 'help#GetHelptag'
     help search-offset
     Expect help#docopen#GetHelptag() ==# 'search-offset'
     help {offset}
-    Expect help#docopen#GetHelptag() ==# '{offset}'
+    Expect help#docopen#GetHelptag() ==# '%7Boffset%7D'
     help /\&
-    Expect help#docopen#GetHelptag() ==# '/\&'
+    Expect help#docopen#GetHelptag() ==# '%2F%5C%26'
     help '
-    Expect help#docopen#GetHelptag() ==# "'"
+    Expect help#docopen#GetHelptag() ==# "%27"
     help "
     Expect help#docopen#GetHelptag() ==# "quote"
   end

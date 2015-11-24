@@ -14,7 +14,8 @@ function! help#docopen#GetHelptag()
   let word = expand('<cWORD>')
   let stripped = substitute(word, '\v^\*([^*]*)\*$', '\1', 'g')
   if word !=# stripped
-    return stripped
+    let escaped = substitute(stripped,'[^A-Za-z0-9_.~-]','\="%".printf("%02X",char2nr(submatch(0)))','g')
+    return escaped
   else
     return ''
   endif
