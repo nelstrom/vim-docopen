@@ -44,6 +44,16 @@ describe 'help#GetHelptag'
 
 end
 
+describe 'help#UrlEncode'
+
+  it 'escapes non-safe characters'
+    Expect help#docopen#UrlEncode("'") ==# "%27"
+    Expect help#docopen#UrlEncode('{offset}') ==# '%7Boffset%7D'
+    Expect help#docopen#UrlEncode('/\&') ==# '%2F%5C%26'
+  end
+
+end
+
 describe 'help#GenarateUrl'
 
   it 'generates an URL from specified filename and helptag'
