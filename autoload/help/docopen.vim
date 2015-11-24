@@ -14,8 +14,7 @@ function! help#docopen#GetHelptag()
   let word = expand('<cWORD>')
   let stripped = substitute(word, '\v^\*([^*]*)\*$', '\1', 'g')
   if word !=# stripped
-    let escaped = substitute(stripped,'[^A-Za-z0-9_.~-]','\="%".printf("%02X",char2nr(submatch(0)))','g')
-    return escaped
+    return stripped
   else
     return ''
   endif
@@ -27,7 +26,7 @@ endfunction
 
 function! help#docopen#RawUrl(filename, ...)
   if a:0 ==# 1 && a:1 !=# ''
-    return 'http://vimhelp.appspot.com/' . a:filename . '.txt.html#' . a:1
+    return 'http://vimhelp.appspot.com/' . a:filename . '.txt.html#' . help#docopen#UrlEncode(a:1)
   else
     return 'http://vimhelp.appspot.com/' . a:filename . '.txt.html'
   endif

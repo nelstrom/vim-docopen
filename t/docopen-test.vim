@@ -23,11 +23,11 @@ describe 'help#GetHelptag'
     help search-offset
     Expect help#docopen#GetHelptag() ==# 'search-offset'
     help {offset}
-    Expect help#docopen#GetHelptag() ==# '%7Boffset%7D'
+    Expect help#docopen#GetHelptag() ==# '{offset}'
     help /\&
-    Expect help#docopen#GetHelptag() ==# '%2F%5C%26'
+    Expect help#docopen#GetHelptag() ==# '/\&'
     help '
-    Expect help#docopen#GetHelptag() ==# "%27"
+    Expect help#docopen#GetHelptag() ==# "'"
     help "
     Expect help#docopen#GetHelptag() ==# "quote"
   end
@@ -78,6 +78,11 @@ describe 'help#GenarateUrl'
   it 'generates an URL from contextual filename and helptag'
     help j
     Expect help#docopen#RawUrl(help#docopen#GetFilename(), help#docopen#GetHelptag()) ==# 'http://vimhelp.appspot.com/motion.txt.html#j'
+  end
+
+  it 'generates an URL from contextual filename and escaped helptag'
+    help {offset}
+    Expect help#docopen#RawUrl(help#docopen#GetFilename(), help#docopen#GetHelptag()) ==# 'http://vimhelp.appspot.com/pattern.txt.html#%7Boffset%7D'
   end
 
 end
