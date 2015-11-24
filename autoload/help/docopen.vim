@@ -20,11 +20,15 @@ function! help#docopen#GetHelptag()
   endif
 endfunction
 
+function! help#docopen#UrlEncode(input)
+  return substitute(a:input,'[^A-Za-z0-9_.~-]','\="%".printf("%02X",char2nr(submatch(0)))','g')
+endfunction
+
 function! help#docopen#RawUrl(filename, ...)
   if a:0 ==# 1 && a:1 !=# ''
-    return 'http://vimdoc.sourceforge.net/htmldoc/' . a:filename . '.html#' . a:1
+    return 'http://vimhelp.appspot.com/' . a:filename . '.txt.html#' . help#docopen#UrlEncode(a:1)
   else
-    return 'http://vimdoc.sourceforge.net/htmldoc/' . a:filename . '.html'
+    return 'http://vimhelp.appspot.com/' . a:filename . '.txt.html'
   endif
 endfunction
 
