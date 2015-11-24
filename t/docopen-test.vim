@@ -47,27 +47,27 @@ end
 describe 'help#GenarateUrl'
 
   it 'generates an URL from specified filename and helptag'
-    Expect help#docopen#RawUrl('foo', 'bar') ==# 'http://vimdoc.sourceforge.net/htmldoc/foo.html#bar'
+    Expect help#docopen#RawUrl('foo', 'bar') ==# 'http://vimhelp.appspot.com/foo.txt.html#bar'
   end
 
   it 'generates an URL from specified filename given a blank helptag'
-    Expect help#docopen#RawUrl('foo', '') ==# 'http://vimdoc.sourceforge.net/htmldoc/foo.html'
+    Expect help#docopen#RawUrl('foo', '') ==# 'http://vimhelp.appspot.com/foo.txt.html'
   end
 
   it 'generates an URL from specified filename'
-    Expect help#docopen#RawUrl('foo') ==# 'http://vimdoc.sourceforge.net/htmldoc/foo.html'
+    Expect help#docopen#RawUrl('foo') ==# 'http://vimhelp.appspot.com/foo.txt.html'
   end
 
   it 'generates an URL from contextual filename'
     help
     " Jump to the first blank line (so there's no helptag beneath cursor)
     normal! }
-    Expect help#docopen#RawUrl(help#docopen#GetFilename(), help#docopen#GetHelptag()) ==# 'http://vimdoc.sourceforge.net/htmldoc/help.html'
+    Expect help#docopen#RawUrl(help#docopen#GetFilename(), help#docopen#GetHelptag()) ==# 'http://vimhelp.appspot.com/help.txt.html'
   end
 
   it 'generates an URL from contextual filename and helptag'
     help j
-    Expect help#docopen#RawUrl(help#docopen#GetFilename(), help#docopen#GetHelptag()) ==# 'http://vimdoc.sourceforge.net/htmldoc/motion.html#j'
+    Expect help#docopen#RawUrl(help#docopen#GetFilename(), help#docopen#GetHelptag()) ==# 'http://vimhelp.appspot.com/motion.txt.html#j'
   end
 
 end
@@ -82,12 +82,12 @@ describe 'ygd'
 
   it 'sets the default register to a help URL'
     normal ygd
-    Expect @@ ==# 'http://vimdoc.sourceforge.net/htmldoc/motion.html#j'
+    Expect @@ ==# 'http://vimhelp.appspot.com/motion.txt.html#j'
   end
 
   it 'sets the specified register to a help URL'
     normal "aygd
-    Expect @a ==# 'http://vimdoc.sourceforge.net/htmldoc/motion.html#j'
+    Expect @a ==# 'http://vimhelp.appspot.com/motion.txt.html#j'
   end
 
 end

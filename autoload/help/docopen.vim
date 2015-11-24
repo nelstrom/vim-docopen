@@ -22,9 +22,9 @@ endfunction
 
 function! help#docopen#RawUrl(filename, ...)
   if a:0 ==# 1 && a:1 !=# ''
-    return 'http://vimdoc.sourceforge.net/htmldoc/' . a:filename . '.html#' . a:1
+    return 'http://vimhelp.appspot.com/' . a:filename . '.txt.html#' . a:1
   else
-    return 'http://vimdoc.sourceforge.net/htmldoc/' . a:filename . '.html'
+    return 'http://vimhelp.appspot.com/' . a:filename . '.txt.html'
   endif
 endfunction
 
