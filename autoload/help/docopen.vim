@@ -25,10 +25,18 @@ function! help#docopen#UrlEncode(input)
 endfunction
 
 function! help#docopen#RawUrl(filename, ...)
-  if a:0 ==# 1 && a:1 !=# ''
-    return 'http://vimhelp.appspot.com/' . a:filename . '.txt.html#' . help#docopen#UrlEncode(a:1)
+  if has('nvim')
+    if a:0 ==# 1 && a:1 !=# ''
+      return 'https://neovim.io/doc/user/' . a:filename . '.html#' . help#docopen#UrlEncode(a:1)
+    else
+      return 'https://neovim.io/doc/user/' . a:filename . '.html'
+    endif
   else
-    return 'http://vimhelp.appspot.com/' . a:filename . '.txt.html'
+    if a:0 ==# 1 && a:1 !=# ''
+      return 'http://vimhelp.appspot.com/' . a:filename . '.txt.html#' . help#docopen#UrlEncode(a:1)
+    else
+      return 'http://vimhelp.appspot.com/' . a:filename . '.txt.html'
+    endif
   endif
 endfunction
 
