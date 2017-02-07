@@ -1,0 +1,53 @@
+*docopen.txt*  Quickly jump from Vim's built-in help to the online help
+
+Author:  Drew Neil
+License: Same terms as Vim itself (see |license|)
+
+INTRODUCTION                                    *docopen*
+
+This plugin lets you quickly jump from Vim's built-in documentation to the
+online help in the browser. For example, run:
+
+    :help
+    :DocOpen
+
+From Vim, your browser should open with the URL for the online help:
+
+    http://vimhelp.appspot.com/help.txt.html
+
+If you're running NeoVim, you should instead see this URL:
+
+    https://neovim.io/doc/user/help.html
+
+If the cursor is positioned on a helptag, then the generated URL will include
+an anchor with that helptag (URL encoded). For example, running these commands
+will open your Browser with the following URLs:
+
+    :help j
+    :DocOpen
+    Vim: http://vimhelp.appspot.com/motion.txt.html#j
+    NeoVim: https://neovim.io/doc/user/motion.html#j
+
+    :help {offset}
+    :DocOpen
+    Vim: http://vimhelp.appspot.com/pattern.txt.html#%7Boffset%7D
+    NeoVim: https://neovim.io/doc/user/pattern.html#%7Boffset%7D
+
+The following commands and mappings are provided only in buffers where the
+filetype=help
+
+COMMANDS                                        *docopen-commands*
+
+                                                *docopen-:DocOpen*
+:DocOpen                Open the current helpfile[#helptag] in your browser.
+
+
+
+MAPPINGS                                        *docopen-mappings*
+
+                                                *docopen-gd*
+gd                      Open the current helpfile[#helptag] in your browser.
+
+                                                *docopen-ygd*
+["x]gd                  Yank the URL for the current helpfile[#helptag]
+                        [into register x].
