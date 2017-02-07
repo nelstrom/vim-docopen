@@ -54,7 +54,7 @@ describe 'help#UrlEncode'
 
 end
 
-describe 'help#GenarateUrl'
+describe 'help#docopen#RawUrl'
 
   it 'generates an URL from specified filename and helptag'
     Expect help#docopen#RawUrl('foo', 'bar') ==# 'http://vimhelp.appspot.com/foo.txt.html#bar'

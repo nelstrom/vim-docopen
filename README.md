@@ -5,4 +5,13 @@ This plugin lets you quickly jump from Vim's built-in documentation to the onlin
     :help
     :DocOpen
 
-Vim will launch the [`help.txt`](http://vimdoc.sourceforge.net/htmldoc/help.html#help.txt) resource in your browser. If your cursor is positioned on a helptag, then the `:DocOpen` command will link to the specified helptag. If the cursor is not on a helptag, then `:DocOpen` will open the current helpfile.
+Vim will launch the [vimhelp.appspot.com/help.txt.html](http://vimhelp.appspot.com/help.txt.html) resource in your browser. NeoVim will use [neovim.io/doc/user/help.html](https://neovim.io/doc/user/help.html) instead.
+
+If your cursor is positioned on a helptag, then the `:DocOpen` command will link to the specified helptag. If the cursor is not on a helptag, then `:DocOpen` will open the current helpfile.
+
+## Additional Commands
+
+These commands are defined in helpfiles only:
+
+* in Normal mode, `gd` does the same as `:DocOpen`
+* `["x]ygd` yanks the `:DocOpen` URL [into register x]
