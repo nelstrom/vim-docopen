@@ -49,5 +49,5 @@ MAPPINGS                                        *docopen-mappings*
 gd                      Open the current helpfile[#helptag] in your browser.
 
                                                 *docopen-ygd*
-["x]gd                  Yank the URL for the current helpfile[#helptag]
+["x]ygd                 Yank the URL for the current helpfile[#helptag]
                         [into register x].
