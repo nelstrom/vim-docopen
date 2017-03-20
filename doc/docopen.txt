@@ -36,6 +36,15 @@ will open your Browser with the following URLs:
 The following commands and mappings are provided only in buffers where the
 filetype=help
 
+SETUP                                           *docopen-setup*
+
+The commands provided by this plugin are only available with |filetype-plugin|
+enabled. You can enable this feature with:
+
+	:filetype plugin on
+
+No further configuration is required.
+
 COMMANDS                                        *docopen-commands*
 
                                                 *docopen-:DocOpen*
